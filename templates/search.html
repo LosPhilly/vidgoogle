@@ -44,6 +44,69 @@ background-color: white;
 color: black;
 }
 
+/* The switch - the box around the slider */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: red;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
 .search-results{
     font-family: 'Poppins', sans-serif;
     background: rgb(255, 255, 255);
@@ -802,8 +865,14 @@ function submitform(){
       </div>
 
     </div>
-         <button class="btn" onclick="darkMode()" title="Dark Mode"><i class="fa fa-moon-o" aria-hidden="true"></i></button>
-        <button class="btn" onclick="lightMode()" title="Light Mode"><i class="fa fa-sun-o" aria-hidden="true"></i></button>
+
+         <i class="fa fa-sun-o" aria-hidden="true"></i>
+        <label class="switch">
+    <input type="checkbox" id="toggle">
+    <span class="slider round"></span>
+  </label>
+
+        <i class="fa fa-moon-o" aria-hidden="true"></i>
 
 
 <!-- OVERLAY -->
@@ -895,6 +964,7 @@ function submitform(){
 {% for result in final_result %}
 <center>
 <div style="padding-left: 50px; padding-right: 50px;" id="searchRes" class="search-results">
+
     <a href="https://pornhub.com{{ result.1 }}" id="fh3" target="_blank"><img src={{result.3}} style="width: 100%; height: 100%"></a>
     <!--<h3 style="color: rgb(0, 94, 0);" id="sh3">"https://pornhub.com{{result.1}}</h3>-->
     <h3 style="color: blue;"><a href="https://pornhub.com{{ result.1 }}" id="fh3" target="_blank">{{ result.2 }}</a></h3>
@@ -1023,23 +1093,56 @@ function topFunction() {
 </script>
 
     <script>
-function darkMode() {
-        var element = document.body;
-        var eleDiv = document.div;
-
-
-
-        element.className = "dark-mode";
-        eleDiv.className = "dark-mode div";
-
+    // Get the toggle switch
+    const toggle = document.getElementById("toggle");
+    // Get the content div
+    const content = document.body;
+    const divContent = document.div;
+    // Add an event listener to the toggle switch
+    toggle.addEventListener("change", function() {
+      // If the toggle switch is checked
+      if (this.checked) {
+        // Add the "dark-mode" class to the content div
+        content.classList.add("dark-mode");
+        divContent.classList.add("dark-mode");
+      } else {
+        // Remove the "dark-mode" class from the content div
+        content.classList.remove("dark-mode");
+        divContent.classList.remove("dark-mode");
       }
-function lightMode() {
-    var element = document.body;
+    });
+  </script>
 
-    element.className = "light-mode";
-
-}
-
-
-
-</script>
+  <script>
+      // Get the toggle switch
+      const toggle = document.getElementById("toggle");
+      // Get the content div
+      const content = document.body;
+      const divContent = document.div;
+      // check localstorage for the switch state
+      if(localStorage.getItem('switch_state')){
+          toggle.checked = JSON.parse(localStorage.getItem('switch_state'));
+          if (toggle.checked) {
+              content.classList.add("dark-mode");
+              divContent.classList.add("dark-mode");
+          } else {
+              content.classList.remove("dark-mode");
+              divContent.classList.remove("dark-mode");
+          }
+      }
+      // Add an event listener to the toggle switch
+      toggle.addEventListener("change", function() {
+        // If the toggle switch is checked
+        if (this.checked) {
+          // Add the "dark-mode" class to the content div
+          content.classList.add("dark-mode");
+          divContent.classList.add("dark-mode");
+          localStorage.setItem('switch_state', true);
+        } else {
+          // Remove the "dark-mode" class from the content div
+          content.classList.remove("dark-mode");
+          divContent.classList.remove("dark-mode");
+          localStorage.setItem('switch_state', false);
+        }
+      });
+    </script>
