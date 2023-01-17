@@ -16,7 +16,7 @@
     <!-- <link rel="stylesheet" href="STYLE.CSS"> -->
     <title>MMCA | Make Me Cum Again</title>
 
- <!-- Google tag (gtag.js) -->
+ <!-- Google tag (gtag.js)
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-254342436-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -25,7 +25,7 @@
 
   gtag('config', 'UA-254342436-1');
 </script>
-
+-->
 
     <style>
         *{
@@ -351,57 +351,6 @@ text-align: center;
 
 
 
-/* Dropdown Button */
-.dropbtn {
-  background-color: transparent;
-  color: orange;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
-
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  width: 100%;
-  left: 0;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-
-/* Mega Menu header, if needed */
-.dropdown-content .header {
-  background: red;
-  padding: 16px;
-  color: white;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
 
 
 
@@ -641,34 +590,29 @@ text-align: center;
 .dropbtn {
   background-color: transparent;
   color: orange;
-  padding: 16px;
+  padding: 10px;
   font-size: 16px;
   border: none;
+  border-radius: 50px;
+  position: relative;
 }
 
-/* The dropdown container */
+/* The container <div> - needed to position the dropdown content */
 .dropdown {
-  float: left;
-  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  padding: 1px;
+  float: right;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  width: 100%;
-  left: 0;
+  background-color: #f1f1f1;
+  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-}
-
-
-/* Mega Menu header, if needed */
-.dropdown-content .header {
-  background: red;
-  padding: 16px;
-  color: white;
 }
 
 /* Links inside the dropdown */
@@ -686,7 +630,7 @@ text-align: center;
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: transparent;}
 
 
 
@@ -765,24 +709,43 @@ text-align: center;
 }
 
 
-
-
-div.scrollmenu {
-  background-color: #333;
-  overflow: auto;
-  white-space: nowrap;
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
-div.scrollmenu div {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px;
+.sidenav form {
+  padding: 8px 8px 8px 32px;
   text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
-div.scrollmenu a:hover {
-  background-color: #777;
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
 
@@ -813,13 +776,19 @@ function off() {
   document.getElementById("overlay").style.display = "none";
 }
 
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
 
-function submitform(){
-
-          document.getElementById("myForm").submit();
-        }
-
-
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+  document.body.style.backgroundColor = "white";
+}
     </script>
 </head>
 
@@ -828,35 +797,21 @@ function submitform(){
 <div class="header">
     <!-- this is a left side div with a link in it-->
     <div class="header_left">
-        <a href="/">About</a>
-        <a href="/">Store</a>
-    </div>
 
-    <div class="header_right">
-
-        <div class="dropdown">
-  <button class="dropbtn"><span class="material-icons header_app"> apps</span></button>
-
-
-             <div class="dropdown-content">
-      <div class="header">
-
-        <h2>Browse by Category:</h2>
-
-          <label class="switch">
+        <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+             <label class="switch">
 
     <input type="checkbox" id="toggle">
 
     <span class="slider round"><i class="fa fa-sun-o" aria-hidden="true" style="float: left; padding: 8px 3px 2px;" ></i><i class="fa fa-moon-o" aria-hidden="true" style="float: right; padding: 8px 3px 2px;"></i></span>
-  </label>
+  <br>
+             </label>
 
-      </div>
-      <div class="row">
-        <div class="column">
-          <button class="button" name = "catSearch" type="submit">All</button>
-
-
-        <form action="catSearch" method="POST">
+            <br>
+         <h2 style="color: red;">Browse by Category:</h2>
+            <br>
+  <form action="catSearch" method="POST">
       {% csrf_token %}
             <input type="hidden" name = "catSearch" value="105" readonly />
         <button class="button" type="submit">60FPS</button>
@@ -871,23 +826,38 @@ function submitform(){
         <form action="catSearch" method="POST">
       {% csrf_token %}<input type="hidden" name = "catSearch" value="98" readonly />
         <button class="button" type="submit">Arab</button></form>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+        <a href="/">About</a>
+        <a href="/">Store</a>
     </div>
-        </div>
-        <div class="column">
-          <h3>Category 2</h3>
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
-        <div class="column">
-          <h3>Category 3</h3>
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
+
+    <div class="header_right">
+
+        <div class="dropdown">
+  <button class="dropbtn"><span class="material-icons header_app" style="position: relative;"> apps</span></button>
+
+
+             <div class="dropdown-content">
+
+        <h2>Choose a network:</h2>
+
+
+
+    <a href="#">PornHub</a>
+    <a href="#">YouPorn</a>
+    <a href="#">RedTube</a>
+
+
       </div>
 
+
     </div>
+
+
 
 <!-- OVERLAY -->
 <button class="btn" onclick="on()" title="Hide my screen">
