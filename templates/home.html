@@ -35,6 +35,69 @@ background-color: white;
 color: black;
 }
 
+/* The switch - the box around the slider */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: red;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
 .footer{
 font-size: 10px;
 text-align: center;
@@ -348,20 +411,7 @@ div.scrollmenu a:hover {
     </style>
 
    <script>
-function darkMode() {
-        var element = document.body;
-        var input = document.getElementsByName("search");
 
-        input.className = "dark-mode";
-        element.className = "dark-mode";
-
-      }
-function lightMode() {
-    var element = document.body;
-
-    element.className = "light-mode";
-
-}
 
 
 
@@ -448,9 +498,14 @@ function submitform(){
       </div>
 
     </div>
-         <button class="btn" onclick="darkMode()" title="Dark Mode"><i class="fa fa-moon-o" aria-hidden="true"></i></button>
-        <button class="btn" onclick="lightMode()" title="Light Mode"><i class="fa fa-sun-o" aria-hidden="true"></i></button>
 
+        <i class="fa fa-sun-o" aria-hidden="true"></i>
+        <label class="switch">
+    <input type="checkbox" id="toggle">
+    <span class="slider round"></span>
+  </label>
+
+        <i class="fa fa-moon-o" aria-hidden="true"></i>
 
 <!-- OVERLAY -->
 <button class="btn" onclick="on()" title="Hide my screen">
@@ -540,5 +595,52 @@ function submitform(){
 <br>
 </div>
 </body>
+
+ <script>
+    // Get the toggle switch
+    const toggle = document.getElementById("toggle");
+    // Get the content div
+    const content = document.body;
+    // Add an event listener to the toggle switch
+    toggle.addEventListener("change", function() {
+      // If the toggle switch is checked
+      if (this.checked) {
+        // Add the "dark-mode" class to the content div
+        content.classList.add("dark-mode");
+      } else {
+        // Remove the "dark-mode" class from the content div
+        content.classList.remove("dark-mode");
+      }
+    });
+  </script>
+
+  <script>
+      // Get the toggle switch
+      const toggle = document.getElementById("toggle");
+      // Get the content div
+      const content = document.body;
+      // check localstorage for the switch state
+      if(localStorage.getItem('switch_state')){
+          toggle.checked = JSON.parse(localStorage.getItem('switch_state'));
+          if (toggle.checked) {
+              content.classList.add("dark-mode");
+          } else {
+              content.classList.remove("dark-mode");
+          }
+      }
+      // Add an event listener to the toggle switch
+      toggle.addEventListener("change", function() {
+        // If the toggle switch is checked
+        if (this.checked) {
+          // Add the "dark-mode" class to the content div
+          content.classList.add("dark-mode");
+          localStorage.setItem('switch_state', true);
+        } else {
+          // Remove the "dark-mode" class from the content div
+          content.classList.remove("dark-mode");
+          localStorage.setItem('switch_state', false);
+        }
+      });
+    </script>
 
 </html>
