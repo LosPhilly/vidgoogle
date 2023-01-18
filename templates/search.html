@@ -1300,7 +1300,7 @@ function catSearch() {
 <div class="mainbody">
     <!-- <img src="google_img.png" style="width: 500px;" alt="google logo"> -->
     <!-- This is the way to make images show up in django-->
-    <img src="{% static 'search/vidgoogle.png' %}" alt="My image" style="width: 30%; height: 30%;">
+    <img src="{% static 'search/vidgoogle.png' %}" alt="My image" style="width: 100%; height: 100%; max-width: 590px">
 
 
 <!--     search engine section-->
@@ -1323,22 +1323,7 @@ function catSearch() {
                 </div>
             </form>
 
-    <form action="autoSearch" method="POST">
-                 {% csrf_token %}
-                <div>
-                        <input type="hidden" name = "autoSearch" value="Car+Porn" readonly >
-
-
-                    <div class="search_button">
-
-                        <button>Top Adult Auto</button>
-                    </div>
-                </div>
-            </form>
-
-
-
-
+   
 <!--{% if final_result %}-->
 <!--<b style="padding-left: 50px; padding-right: 50px; color: #646464;">Web Results</b>-->
 <!--{% for result in final_result %}-->
@@ -1368,7 +1353,7 @@ function catSearch() {
     <h3 id="th3"> Uploader: {{ result.5 }}<br>{{ result.0 }}<br> <i class="fa fa-thumbs-up" style="color: green;">{{ result.4 }}  </i>  <br> <i class="fa fa-clock-o" style="color: blue; ">{{ result.6 }}</i>
     </h3>
     <br>
-
+<iframe data-aa='2154080' src='//acceptable.a-ads.com/2154080' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
 </div>
 </center>
 <br><br>
