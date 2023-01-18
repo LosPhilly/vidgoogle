@@ -111,13 +111,15 @@ def catSearch(request):
             # final_result.append(result_image)
 
             for result in result_listings:
-
-                result_title = result.find(class_='thumbnail-info-wrapper clearfix').text
+                result_views = result.find(class_='views').text
                 result_url = result.find('a').get('href')
                 result_img = result.find("img").get('src')
                 result_desc = result.find(class_='title').text
+                result_rate = result.find(class_='rating-container neutral').text
+                result_uploader = result.find(class_='videoUploaderBlock clearfix').text
+                result_time = result.find(class_='marker-overlays js-noFade').text
 
-                final_result.append((result_title, result_url, result_desc, result_img))
+                final_result.append((result_views, result_url, result_desc, result_img, result_rate, result_uploader, result_time))
             page = page + 1
 
         search_result = []
