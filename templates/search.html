@@ -14,7 +14,7 @@
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="STYLE.CSS"> -->
-    <title>MMCA | Make Me Cum Again</title>
+    <title>VidGoogle | Adult Search</title>
 
  <!-- Google tag (gtag.js)
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-254342436-1"></script>
@@ -42,18 +42,18 @@ body{
 
 .dark-mode {
         background-color: black;
-        color: white;
+        color: orange;
         text-color: blue;
       }
 
 .dark-mode div{
         background-color: black;
-        color: red;
+        color: orange;
         text-color: blue;
       }
 .light-mode {
 background-color: white;
-color: white;
+color: black;
 }
 
 /* The switch - the box around the slider */
@@ -126,7 +126,7 @@ color: white;
     background: rgb(255, 255, 255);
     box-shadow: 0px 10px 10px 2px rgba(56, 56, 56, 0.103);
     text-decoration: none;
-    width: 35%;
+    width: 55%;
     height: 100%;
     justify-content: center;
 
@@ -138,7 +138,7 @@ color: white;
     background: black;
     box-shadow: 0px 10px 10px 2px rgba(56, 56, 56, 0.103);
     text-decoration: none;
-    width: 35%;
+    width: 55%;
     height: 100%;
     justify-content: center;
 
@@ -216,49 +216,7 @@ text-align: center;
     margin: 0 auto;
 }
 
-/* search input styling */
-.search_input{
-    display: flex;
-    align-items: center;
-    border: 1px solid lightgray;
-    height: 30px;
-    padding: 10px 20px;
-    border-radius: 999px;
-    margin-top: 40px;
-    width: 40vw;
-    margin: 0 auto;
-    max-width: 100%;
-}
 
-/* styling input */
-.search_input input{
-    flex: 1;
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-}
-
-/* styling icons */
-.search_input .material-icons{
-    color: grey;
-}
-
-/* styling search_buttom div */
-.search_button{
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-}
-
-/* styling botton */
-.search_button button{
-    margin: 5px;
-    padding: 10px 15px;
-    background-color: #f8f8f8;
-    outline: none;
-    border: none;
-    cursor: pointer;
-}
 
 
 
@@ -515,9 +473,9 @@ text-align: center;
     padding: 10px 20px;
     border-radius: 999px;
     margin-top: 40px;
-    width: 40vw;
+    width: 80vw;
     margin: 0 auto;
-    max-width: 560px;
+    max-width: 100%;
 }
 
 /* styling input */
@@ -749,6 +707,73 @@ text-align: center;
 }
 
 
+
+/* MENU Style the search box */
+#mySearch {
+  width: 100%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid #ddd;
+}
+
+/* Style the navigation menu */
+#myMenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style the navigation links */
+#myMenu li form {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block
+}
+
+#myMenu li form:hover {
+  background-color: #eee;
+}
+
+
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+
+}
+
+
 /* done!!! */
 
 
@@ -790,6 +815,30 @@ function closeNav() {
   document.body.style.backgroundColor = "white";
 }
     </script>
+
+    <script>
+function catSearch() {
+  // Declare variables
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("form")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+
+
 </head>
 
 <div>
@@ -811,28 +860,387 @@ function closeNav() {
             <br>
          <h2 style="color: red;">Browse by Category:</h2>
             <br>
-  <form action="catSearch" method="POST">
+  <input type="text" id="mySearch" onkeyup="catSearch()" placeholder="Search.." title="Type in a category">
+
+<ul id="myMenu">
+<li><form action="catSearch" method="POST">
       {% csrf_token %}
             <input type="hidden" name = "catSearch" value="105" readonly />
         <button class="button" type="submit">60FPS</button>
-        </form>
+        </form></li>
 
-        <form action="catSearch" method="POST">
+        <li><form action="catSearch" method="POST">
       {% csrf_token %}<input type="hidden" name = "catSearch" value="3" readonly />
-        <button class="button" type="submit">Amateur</button></form>
-        <form action="catSearch" method="POST">
+        <button class="button" type="submit">Amateur</button></form></li>
+
+        <li><form action="catSearch" method="POST">
       {% csrf_token %}<input type="hidden" name = "catSearch" value="35" readonly />
-        <button class="button" type="submit">Anal</button></form>
-        <form action="catSearch" method="POST">
+        <button class="button" type="submit">Anal</button></form></li>
+
+        <li><form action="catSearch" method="POST">
       {% csrf_token %}<input type="hidden" name = "catSearch" value="98" readonly />
-        <button class="button" type="submit">Arab</button></form>
+        <button class="button" type="submit">Arab</button></form></li>
+
+<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="1" readonly />
+        <button class="button" type="submit">Asian</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="6" readonly />
+        <button class="button" type="submit">BBW</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="89" readonly />
+        <button class="button" type="submit">Babysitter</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="141" readonly />
+        <button class="button" type="submit">Behind The Scenes</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="4" readonly />
+        <button class="button" type="submit">Big Ass</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="7" readonly />
+        <button class="button" type="submit">Big Dick</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="8" readonly />
+        <button class="button" type="submit">Big Tits</button></form></li>
+
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="9" readonly />
+        <button class="button" type="submit">Blonde</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="13" readonly />
+        <button class="button" type="submit">Blowjob</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="10" readonly />
+        <button class="button" type="submit">Bondage</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="102" readonly />
+        <button class="button" type="submit">Brazilian</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="96" readonly />
+        <button class="button" type="submit">British</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="11" readonly />
+        <button class="button" type="submit">Brunette</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="14" readonly />
+        <button class="button" type="submit">Bukkake</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="86" readonly />
+        <button class="button" type="submit">Cartoon</button></form></li>
+
+<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="90" readonly />
+        <button class="button" type="submit">Casting</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="12" readonly />
+        <button class="button" type="submit">Celebrity</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="57" readonly />
+        <button class="button" type="submit">Compilation</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="241" readonly />
+        <button class="button" type="submit">Cosplay</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="15" readonly />
+        <button class="button" type="submit">Creampie</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="242" readonly />
+        <button class="button" type="submit">Cuckold</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="16" readonly />
+        <button class="button" type="submit">Cumshot</button></form></li>
+
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="100" readonly />
+        <button class="button" type="submit">Czech</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="72" readonly />
+        <button class="button" type="submit">DP</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="17" readonly />
+        <button class="button" type="submit">Ebony</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="55" readonly />
+        <button class="button" type="submit">Euro</button></form></li>
+
+<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="115" readonly />
+        <button class="button" type="submit">Exclusive</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="93" readonly />
+        <button class="button" type="submit">Feet</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="502" readonly />
+        <button class="button" type="submit">Female Orgasm</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="18" readonly />
+        <button class="button" type="submit">Fetish</button></form></li>
+
+<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="19" readonly />
+        <button class="button" type="submit">Fisting</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="80" readonly />
+        <button class="button" type="submit">Gangbang</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="95" readonly />
+        <button class="button" type="submit">German</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="20" readonly />
+        <button class="button" type="submit">Handjob</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="21" readonly />
+        <button class="button" type="submit">Hardcore</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="101" readonly />
+        <button class="button" type="submit">Indian</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="25" readonly />
+        <button class="button" type="submit">Interracial</button></form></li>
+
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="97" readonly />
+        <button class="button" type="submit">Italian</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="111" readonly />
+        <button class="button" type="submit">Japanese</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="26" readonly />
+        <button class="button" type="submit">Latina</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="27" readonly />
+        <button class="button" type="submit">Lesbian</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="29" readonly />
+        <button class="button" type="submit">MILF</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="78" readonly />
+        <button class="button" type="submit">Massage</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="22" readonly />
+        <button class="button" type="submit">Masturbation</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="28" readonly />
+        <button class="button" type="submit">Mature</button></form></li>
+
+<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="512" readonly />
+        <button class="button" type="submit">Muscular Men</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="121" readonly />
+        <button class="button" type="submit">Music</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="181" readonly />
+        <button class="button" type="submit">Old/Young (18+)</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="2" readonly />
+        <button class="button" type="submit">Orgy</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="41" readonly />
+        <button class="button" type="submit">POV</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="201" readonly />
+        <button class="button" type="submit">Parody</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="53" readonly />
+        <button class="button" type="submit">Party</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="211" readonly />
+        <button class="button" type="submit">Pissing</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="24" readonly />
+        <button class="button" type="submit">Public</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="131" readonly />
+        <button class="button" type="submit">Pussy Licking</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="42" readonly />
+        <button class="button" type="submit">Red Head</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="81" readonly />
+        <button class="button" type="submit">Role Play</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="522" readonly />
+        <button class="button" type="submit">Romantic</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="67" readonly />
+        <button class="button" type="submit">Rough Sex</button></form></li>
+
+<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="99" readonly />
+        <button class="button" type="submit">Russian</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="88" readonly />
+        <button class="button" type="submit">School (18+)</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="59" readonly />
+        <button class="button" type="submit">Small Tits</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="91" readonly />
+        <button class="button" type="submit">Smoking</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="492" readonly />
+        <button class="button" type="submit">Solo Female</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="92" readonly />
+        <button class="button" type="submit">Solo Male</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="69" readonly />
+        <button class="button" type="submit">Squirt</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="444" readonly />
+        <button class="button" type="submit">Step Fantasy</button></form></li>
+
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="33" readonly />
+        <button class="button" type="submit">Striptease</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="562" readonly />
+        <button class="button" type="submit">Tattooed Women</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="65" readonly />
+        <button class="button" type="submit">Threesome</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="23" readonly />
+        <button class="button" type="submit">Toys</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="138" readonly />
+        <button class="button" type="submit">Verified Amateurs</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="482" readonly />
+        <button class="button" type="submit">Verified Couples</button></form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="139" readonly />
+        <button class="button" type="submit">Verified Models</button></form></li>
+
+		<li><form action="catSearch" method="POST">
+      {% csrf_token %}
+            <input type="hidden" name = "catSearch" value="43" readonly />
+        <button class="button" type="submit">Vintage</button>
+        </form></li>
+
+        <li><form action="catSearch" method="POST">
+      {% csrf_token %}<input type="hidden" name = "catSearch" value="61" readonly />
+        <button class="button" type="submit">Webcam</button></form></li>
+
+ </ul>
+
+
+
+
 </div>
 
 <!-- Use any element to open the sidenav -->
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-
-        <a href="/">About</a>
-        <a href="/">Store</a>
+&nbsp;&nbsp;&nbsp;
+        <a href="/">Home</a>
+        <a href="https://thelove.shop">Store</a>
     </div>
 
     <div class="header_right">
@@ -847,9 +1255,9 @@ function closeNav() {
 
 
 
-    <a href="#">PornHub</a>
-    <a href="#">YouPorn</a>
-    <a href="#">RedTube</a>
+    <a href="https://pornhub.com">PornHub</a>
+    <a href="https://youporn.com">YouPorn</a>
+    <a href="https://redtube.com">RedTube</a>
 
 
       </div>
@@ -894,13 +1302,16 @@ function closeNav() {
 
 
 <!--     search engine section-->
-            <form action="search" method="POST">
+            <form autocomplete="on" action="search" method="POST">
                  {% csrf_token %}
                 <div class="search">
-                    <div class="search_input">
+                    <div class="search_input" >
                         <span class="material-icons">search</span>
-                        <input type="text" name="search" autofocus x-webkit-speech style="width: 100%">
-                        <span class="material-icons">mic</span>
+                        <div class="autocomplete">
+                        <input type="text" id="myInput" name="search" placeholder="What are you looking for..." autofocus x-webkit-speech style="width: 90%">
+
+
+                            </div>
                     </div>
 
                     <div class="search_button">
@@ -1130,3 +1541,111 @@ function topFunction() {
         }
       });
     </script>
+
+    <script>
+var sexyWords = ["4r5e","5h1t","5hit","a55","anal","anus","ar5e","arrse","arse","ass","ass-fucker","asses","assfucker","assfukka","asshole","assholes","asswhole","a_s_s","b!tch","b00bs","b17ch","b1tch","ballbag","balls","ballsack","bastard","beastial","beastiality","bellend","bestial","bestiality","bi+ch","biatch","bitch","bitcher","bitchers","bitches","bitchin","bitching","bloody","blow job","blowjob","blowjobs","boiolas","bollock","bollok","boner","boob","boobs","booobs","boooobs","booooobs","booooooobs","booty","breasts","buceta","bugger","bum","bunny fucker","butt","butthole","buttmuch","buttplug","c0ck","c0cksucker","carpet muncher","cawk","chink","cipa","cl1t","clit","clitoris","clits","cnut","cock","cock-sucker","cockface","cockhead","cockmunch","cockmuncher","cocks","cocksuck ","cocksucked ","cocksucker","cocksucking","cocksucks ","cocksuka","cocksukka","cok","cokmuncher","coksucka","coon","cox","crap","cum","cummer","cumming","cums","cumshot","cunilingus","cunillingus","cunnilingus","cunt","cuntlick ","cuntlicker ","cuntlicking ","cunts","cyalis","cyberfuc","cyberfuck ","cyberfucked ","cyberfucker","cyberfuckers","cyberfucking ","d1ck","damn","dick","dickhead","dildo","dildos","dink","dinks","dirsa","dlck","dog-fucker","doggin","dogging","donkeyribber","doosh","duche","dyke","ejaculate","ejaculated","ejaculates ","ejaculating ","ejaculatings","ejaculation","ejakulate","f u c k","f u c k e r","f4nny","fag","fagging","faggitt","faggot","faggs","fagot","fagots","fags","fanny","fannyflaps","fannyfucker","fanyy","fatass","fcuk","fcuker","fcuking","feck","fecker","felching","fellate","fellatio","fingerfuck ","fingerfucked ","fingerfucker ","fingerfuckers","fingerfucking ","fingerfucks ","fistfuck","fistfucked ","fistfucker ","fistfuckers ","fistfucking ","fistfuckings ","fistfucks ","flange","fook","fooker","fuck","fucka","fucked","fucker","fuckers","fuckhead","fuckheads","fuckin","fucking","fuckings","fuckingshitmotherfucker","fuckme ","fucks","fuckwhit","fuckwit","fudge packer","fudgepacker","fuk","fuker","fukker","fukkin","fuks","fukwhit","fukwit","fux","fux0r","f_u_c_k","gangbang","gangbanged ","gangbangs ","gaylord","gaysex","goatse","God","god-dam","god-damned","goddamn","goddamned","hardcoresex ","hell","heshe","hoar","hoare","hoer","homo","hore","horniest","horny","hotsex","jack-off ","jackoff","jap","jerk-off ","jism","jiz ","jizm ","jizz","kawk","knob","knobead","knobed","knobend","knobhead","knobjocky","knobjokey","kock","kondum","kondums","kum","kummer","kumming","kums","kunilingus","l3i+ch","l3itch","labia","lmfao","lust","lusting","m0f0","m0fo","m45terbate","ma5terb8","ma5terbate","masochist","master-bate","masterb8","masterbat*","masterbat3","masterbate","masterbation","masterbations","masturbate","mo-fo","mof0","mofo","mothafuck","mothafucka","mothafuckas","mothafuckaz","mothafucked ","mothafucker","mothafuckers","mothafuckin","mothafucking ","mothafuckings","mothafucks","mother fucker","motherfuck","motherfucked","motherfucker","motherfuckers","motherfuckin","motherfucking","motherfuckings","motherfuckka","motherfucks","muff","mutha","muthafecker","muthafuckker","muther","mutherfucker","n1gga","n1gger","nazi","nigg3r","nigg4h","nigga","niggah","niggas","niggaz","nigger","niggers ","nob","nob jokey","nobhead","nobjocky","nobjokey","numbnuts","nutsack","orgasim ","orgasims ","orgasm","orgasms ","p0rn","pawn","pecker","penis","penisfucker","phonesex","phuck","phuk","phuked","phuking","phukked","phukking","phuks","phuq","pigfucker","pimpis","piss","pissed","pisser","pissers","pisses ","pissflaps","pissin ","pissing","pissoff ","poop","porn","porno","pornography","pornos","prick","pricks ","pron","pube","pusse","pussi","pussies","pussy","pussys ","rectum","retard","rimjaw","rimming","s hit","s.o.b.","sadist","schlong","screwing","scroat","scrote","scrotum","semen","sex","sh!+","sh!t","sh1t","shag","shagger","shaggin","shagging","shemale","shi+","shit","shitdick","shite","shited","shitey","shitfuck","shitfull","shithead","shiting","shitings","shits","shitted","shitter","shitters ","shitting","shittings","shitty ","skank","slut","sluts","smegma","smut","snatch","son-of-a-bitch","spac","spunk","s_h_i_t","t1tt1e5","t1tties","teets","teez","testical","testicle","tit","titfuck","tits","titt","tittie5","tittiefucker","titties","tittyfuck","tittywank","titwank","tosser","turd","tw4t","twat","twathead","twatty","twunt","twunter","v14gra","v1gra","vagina","viagra","vulva","w00se","wang","wank","wanker","wanky","whoar","whore","willies","willy","xrated","xxx"];
+
+
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+}
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+});
+}
+
+
+
+autocomplete(document.getElementById("myInput"), sexyWords);
+
+
+</script>
